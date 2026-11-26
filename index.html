@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 20th Birthday, Salsabila Azzahra Silawane! 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --pink-light: #ffe4ec;
+      --pink-soft: #ffb6c1;
+      --pink-main: #ff69b4;
+      --pink-deep: #d63384;
+      --text-dark: #4a1c30;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fff0f5 0%, #ffd6e7 50%, #ffc2d1 100%);
+      color: var(--text-dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 20px;
+    }
+
+    /* Background Floating Hearts */
+    .floating-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart-particle {
+      position: absolute;
+      bottom: -40px;
+      color: rgba(255, 105, 180, 0.45);
+      animation: floatUp linear infinite;
+      user-select: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Opening Screen (Envelope/Gate) */
+    #intro-screen {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    #intro-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .gift-icon {
+      font-size: 75px;
+      animation: bounce 1.8s infinite;
+      margin-bottom: 16px;
+      filter: drop-shadow(0 8px 15px rgba(214, 51, 132, 0.3));
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    #intro-screen h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.4rem;
+      color: #880e4f;
+      margin-bottom: 8px;
+    }
+
+    #intro-screen p {
+      font-size: 0.95rem;
+      color: #6a1b4d;
+      margin-bottom: 28px;
+    }
+
+    .btn-open {
+      background: linear-gradient(45deg, #ff4d94, #ff85b3);
+      color: white;
+      border: none;
+      padding: 14px 34px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(255, 77, 148, 0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-open:hover {
+      transform: scale(1.06);
+      box-shadow: 0 14px 30px rgba(255, 77, 148, 0.6);
+    }
+
+    /* Main Card */
+    .card-container {
+      position: relative;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 2px solid rgba(255, 182, 193, 0.7);
+      border-radius: 28px;
+      max-width: 520px;
+      width: 100%;
+      padding: 36px 26px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(214, 51, 132, 0.18);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.9s ease;
+    }
+
+    .card-container.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .age-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #ff69b4, #ff9ebb);
+      color: white;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 12px rgba(255, 105, 180, 0.35);
+    }
+
+    .title-script {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.7rem;
+      color: var(--pink-deep);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .name-highlight {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ad1457;
+      margin-bottom: 20px;
+      letter-spacing: 0.4px;
+    }
+
+    .divider {
+      height: 2px;
+      width: 70px;
+      background: linear-gradient(90deg, transparent, #ff69b4, transparent);
+      margin: 0 auto 22px auto;
+    }
+
+    .message-box {
+      background: #fff5f8;
+      border: 1px dashed #ff85b3;
+      border-radius: 18px;
+      padding: 20px 18px;
+      font-size: 0.94rem;
+      line-height: 1.75;
+      color: #591c38;
+      min-height: 150px;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+
+    .wishes-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 26px;
+    }
+
+    .tag {
+      background: #ffe0eb;
+      color: #c2185b;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 13px;
+      border-radius: 20px;
+    }
+
+    .btn-celebrate {
+      background: linear-gradient(45deg, #d63384, #ff69b4);
+      color: white;
+      border: none;
+      padding: 12px 26px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(214, 51, 132, 0.35);
+      transition: transform 0.2s;
+    }
+
+    .btn-celebrate:active {
+      transform: scale(0.95);
+    }
+
+    .footer-note {
+      margin-top: 22px;
+      font-size: 0.78rem;
+      color: #9e4770;
+    }
+
+    /* Confetti Canvas */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    @media (max-width: 480px) {
+      .title-script { font-size: 2.3rem; }
+      .name-highlight { font-size: 1.15rem; }
+      .card-container { padding: 28px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="confetti-canvas"></canvas>
+  <div class="floating-bg" id="floating-bg"></div>
+
+  <!-- Halaman Pembuka -->
+  <div id="intro-screen">
+    <div class="gift-icon">🎁</div>
+    <h2>Ada Kejutan Buat Kamu...</h2>
+    <p>Spesial buat yang hari ini resmi menginjak usia baru ✨</p>
+    <button class="btn-open" onclick="openCard()">Buka Ucapan 💖</button>
+  </div>
+
+  <!-- Kartu Ucapan Utama -->
+  <div class="card-container" id="main-card">
+    <div class="age-badge">✨ CHAPTER 20 • 30 NOVEMBER ✨</div>
+    <h1 class="title-script">Happy Birthdayy Sayang!</h1>
+    <div class="name-highlight">My Bini LOPLOPLOP POKONAMAH 🌷</div>
+    <div class="divider"></div>
+
+    <div class="message-box">
+      <p id="typed-message"></p>
+    </div>
+
+    <div class="wishes-tags">
+      <span class="tag">🎂 Happy 20th</span>
+      <span class="tag">💖 Sehat Selalu</span>
+      <span class="tag">🌸 Makin Bahagia</span>
+      <span class="tag">✨ Semua Impian Tercapai</span>
+    </div>
+
+    <button class="btn-celebrate" onclick="launchConfetti()">Tiup Lilin🎉</button>
+
+    <div class="footer-note">Dibuat khusus dengan sepenuh hati untuk MAY BINIIII💕</div>
+  </div>
+
+  <audio src="bg-music" loop preload="auto" src="lagu.mp3"></audio>
+  
+
+  <script>
+  
+    const messageText = `HAPPY BIRTDAY SAYANGGGGGGGGG  🥳💖
+    Nggak kerasa sekarang aca udah masuk kepala dua hihihii. Semoga di umur 20 ini aca selalu dikelilingi hal-hal baik,
+    dilancarkan semua urusannya, sehat terus, makin dewasa jangan suka TELAT MAKAN!!!! , sama jangan pernah niggalin SHOLATT okeyyyyy.
+    Di usia baru ini, semoga hari-hari aca dipenuhi banyak kabar bagus, hal-hal yang bikin aca ketawa lepas, 
+    dan dijauhkan dari segala hal yang bikin aca kepikiran terlalu berat. Kalau lagi capek atau ngerasa kewalahan, 
+    ingat aja kalau ami selalu ada di sini buat dengerin cerita aca.
+    Makasiihhh bangettt udah jadi bagian paling spesial buat ami, 
+    Semoga semua cita-cita dan wishlist aca di tahun ini dan kedepannya satu per satu terwujud ya aamiinnnnnn. 
+    Love you always! 🌸✨`;
+
+    // Membuat animasi hati & bunga melayang di background
+    const floatingBg = document.getElementById('floating-bg');
+    const symbols = ['💖', '🌸', '💕', '✨', '🌷', '💗'];
+    for (let i = 0; i < 22; i++) {
+      const span = document.createElement('span');
+      span.className = 'heart-particle';
+      span.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+      span.style.left = Math.random() * 100 + 'vw';
+      span.style.fontSize = (Math.random() * 16 + 14) + 'px';
+      span.style.animationDuration = (Math.random() * 6 + 6) + 's';
+      span.style.animationDelay = (Math.random() * 5) + 's';
+      floatingBg.appendChild(span);
+    }
+
+    // Efek mengetik otomatis
+    let charIndex = 0;
+    function typeWriter() {
+      const target = document.getElementById('typed-message');
+      if (charIndex < messageText.length) {
+        if (messageText.charAt(charIndex) === '\n') {
+          target.innerHTML += '<br>';
+        } else {
+          target.innerHTML += messageText.charAt(charIndex);
+        }
+        charIndex++;
+        setTimeout(typeWriter, 32);
+      }
+    }
+
+    // Fungsi saat tombol pembuka diklik
+    function openCard() {
+      document.getElementById('intro-screen').classList.add('hidden');
+      const card = document.getElementById('main-card');
+      card.classList.add('show');
+
+      // Putar musik jika tag audio diaktifkan
+      const music = document.getElementById('bg-music');
+      if (music) {
+        music.play().catch(() => {});
+      }
+
+      launchConfetti();
+      setTimeout(typeWriter, 500);
+    }
+
+    // Efek Konfeti Pink
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    let confettiPieces = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function launchConfetti() {
+      const colors = ['#ff69b4', '#ff1493', '#ffb6c1', '#ffc0cb', '#ff85a2', '#ffd700'];
+      for (let i = 0; i < 90; i++) {
+        confettiPieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          w: Math.random() * 10 + 6,
+          h: Math.random() * 6 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          speedY: Math.random() * 3 + 2,
+          speedX: Math.random() * 2 - 1,
+          angle: Math.random() * 360
+        });
+      }
+    }
+
+    function updateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confettiPieces.forEach((p, index) => {
+        p.y += p.speedY;
+        p.x += p.speedX;
+        p.angle += 4;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.angle * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+
+        if (p.y > canvas.height) {
+          confettiPieces.splice(index, 1);
+        }
+      });
+      requestAnimationFrame(updateConfetti);
+    }
+    updateConfetti();
+  </script>
+</body>
+</html>
