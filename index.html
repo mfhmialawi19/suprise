@@ -293,7 +293,7 @@
     <div class="footer-note">Dibuat khusus dengan sepenuh hati untuk MAY BINIIII💕</div>
   </div>
 
-  <audio src="bg-music" loop preload="auto" src="lagu.mp3"></audio>
+  <audio id="bg-music" loop preload="auto" src="lagu.mp3"></audio>
   
 
   <script>
@@ -345,12 +345,12 @@
 
       // Putar musik jika tag audio diaktifkan
       const music = document.getElementById('bg-music');
-      if (music) {
-        music.play().catch(() => {});
-      }
-
-      launchConfetti();
-      setTimeout(typeWriter, 500);
+    if (music) {
+    music.volume = 1.0;
+    music.play().catch((err) => console.log('Audio gagal diputar:', err));
+    }
+  launchConfetti();
+  setTimeout(typeWriter, 500);
     }
 
     // Efek Konfeti Pink
